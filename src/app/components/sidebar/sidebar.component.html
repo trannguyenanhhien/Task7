@@ -1,0 +1,72 @@
+<div class="warraper bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="card info">
+          <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#infoBody">
+              Image Information
+              <i class="fas fa-chevron-down float-right"></i>
+            </a>
+          </div>
+          <div id="infoBody" class="collapse show">
+            <div class="card-body">
+              Image Number: {{imgNum | json}}
+            </div>
+          </div>
+        </div>
+        <div class="card info">
+          <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#infoBody2">
+              Image Information
+              <i class="fas fa-chevron-down float-right"></i>
+            </a>
+          </div>
+          <div id="infoBody2" class="collapse show">
+            <div class="card-body">
+              <div class="showingImg col-lg-12 ">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="dp"
+                        [(ngModel)]="date"
+                        ngbDatepicker
+                        #d="ngbDatepicker"
+                      />
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-secondary calendar"
+                          (click)="d.toggle()"
+                          type="button"
+                        ></button>
+                      </div>
+                    </div>
+                    <a
+                      *ngIf="!isPlay"
+                      class="btn btn-secondary text-white controls ml-3 play"
+                      (click)="slidePlayer()"
+                      ><i class="fas fa-play-circle"></i> Play</a
+                    >
+                    <a
+                      *ngIf="isPlay"
+                      class="controls btn btn-secondary text-white ml-3 pause"
+                      (click)="slidePlayer()"
+                      ><i class="fas fa-pause-circle"></i> Pause</a
+                    >
+                  </div>
+                </form>
+                <!-- <div>{{ date | json }}</div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <app-slideshow [date]="date"></app-slideshow>
+      </div>
+    </div>
+  </div>
+</div>
